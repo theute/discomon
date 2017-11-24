@@ -123,6 +123,13 @@ objects:
               namespaces:
                 names:
                   - <NAMESPACE>
+### We'd like to keep those, but removing them for now to have Tomcat>JVM links working in Grafana
+### See: https://github.com/grafana/grafana/issues/9982
+          metric_relabel_configs:
+            - regex: 'deployment'
+              action: labeldrop
+            - regex: 'deploymentconfig'
+              action: labeldrop
           relabel_configs:
           - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
             action: drop
@@ -167,7 +174,7 @@ objects:
           deploymentconfig: grafana
       spec:
         containers:
-        - image: hawkular/hawkular-grafana-datasource:1.0.10
+        - image: docker.io/theute/hawkular-grafana-datasource:latest
           imagePullPolicy: Always
           name: grafana
           ports:
@@ -229,7 +236,7 @@ objects:
               name: discomon-config
               defaultMode: 420
         containers:
-        - image: jotak/discomon:latest
+        - image: docker.io/theute/discomon:latest
           imagePullPolicy: Always
           name: discomon
           resources: {}

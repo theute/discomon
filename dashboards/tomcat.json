@@ -1,7 +1,17 @@
 {
     "dashboard": {
         "annotations": {
-            "list": []
+            "list": [
+                {
+                    "builtIn": 1,
+                    "datasource": "-- Grafana --",
+                    "enable": true,
+                    "hide": true,
+                    "iconColor": "rgba(0, 211, 255, 1)",
+                    "name": "Annotations & Alerts",
+                    "type": "dashboard"
+                }
+            ]
         },
         "description": "Dashboard about Tomcat Metrics",
         "editable": true,
@@ -19,6 +29,8 @@
                     {
                         "aliasColors": {},
                         "bars": false,
+                        "dashLength": 10,
+                        "dashes": false,
                         "datasource": "prometheus",
                         "fill": 1,
                         "id": 2,
@@ -40,6 +52,7 @@
                         "points": false,
                         "renderer": "flot",
                         "seriesOverrides": [],
+                        "spaceLength": 10,
                         "span": 12,
                         "stack": false,
                         "steppedLine": false,
@@ -74,6 +87,7 @@
                         },
                         "type": "graph",
                         "xaxis": {
+                            "buckets": null,
                             "mode": "time",
                             "name": null,
                             "show": true,
@@ -105,13 +119,228 @@
                 "showTitle": false,
                 "title": "Dashboard Row",
                 "titleSize": "h6"
+            },
+            {
+                "collapse": false,
+                "height": 250,
+                "panels": [
+                    {
+                        "columns": [
+                            {
+                                "text": "Avg",
+                                "value": "avg"
+                            }
+                        ],
+                        "datasource": "prometheus",
+                        "fontSize": "100%",
+                        "id": 3,
+                        "links": [
+                            {
+                                "dashUri": "db/jvm",
+                                "dashboard": "JVM",
+                                "title": "Go to JVM Dashboard",
+                                "type": "dashboard"
+                            }
+                        ],
+                        "pageSize": null,
+                        "scroll": true,
+                        "showHeader": true,
+                        "sort": {
+                            "col": 0,
+                            "desc": true
+                        },
+                        "span": 12,
+                        "styles": [
+                            {
+                                "alias": "Time",
+                                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                                "link": false,
+                                "linkUrl": "",
+                                "pattern": "Time",
+                                "type": "hidden"
+                            },
+                            {
+                                "alias": "",
+                                "colorMode": null,
+                                "colors": [
+                                    "rgba(245, 54, 54, 0.9)",
+                                    "rgba(237, 129, 40, 0.89)",
+                                    "rgba(50, 172, 45, 0.97)"
+                                ],
+                                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                                "decimals": 2,
+                                "pattern": "__name__",
+                                "thresholds": [],
+                                "type": "hidden",
+                                "unit": "short"
+                            },
+                            {
+                                "alias": "",
+                                "colorMode": null,
+                                "colors": [
+                                    "rgba(245, 54, 54, 0.9)",
+                                    "rgba(237, 129, 40, 0.89)",
+                                    "rgba(50, 172, 45, 0.97)"
+                                ],
+                                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                                "decimals": 2,
+                                "pattern": "job",
+                                "thresholds": [],
+                                "type": "hidden",
+                                "unit": "short"
+                            },
+                            {
+                                "alias": "",
+                                "colorMode": null,
+                                "colors": [
+                                    "rgba(245, 54, 54, 0.9)",
+                                    "rgba(237, 129, 40, 0.89)",
+                                    "rgba(50, 172, 45, 0.97)"
+                                ],
+                                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                                "decimals": 2,
+                                "pattern": "pod_template_hash",
+                                "thresholds": [],
+                                "type": "hidden",
+                                "unit": "short"
+                            },
+                            {
+                                "alias": "",
+                                "colorMode": null,
+                                "colors": [
+                                    "rgba(245, 54, 54, 0.9)",
+                                    "rgba(237, 129, 40, 0.89)",
+                                    "rgba(50, 172, 45, 0.97)"
+                                ],
+                                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                                "decimals": 2,
+                                "pattern": "instance",
+                                "thresholds": [],
+                                "type": "hidden",
+                                "unit": "short"
+                            },
+                            {
+                                "alias": "",
+                                "colorMode": null,
+                                "colors": [
+                                    "rgba(245, 54, 54, 0.9)",
+                                    "rgba(237, 129, 40, 0.89)",
+                                    "rgba(50, 172, 45, 0.97)"
+                                ],
+                                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                                "decimals": 2,
+                                "pattern": "Value",
+                                "thresholds": [],
+                                "type": "hidden",
+                                "unit": "short"
+                            },
+                            {
+                                "alias": "Application",
+                                "colorMode": null,
+                                "colors": [
+                                    "rgba(245, 54, 54, 0.9)",
+                                    "rgba(237, 129, 40, 0.89)",
+                                    "rgba(50, 172, 45, 0.97)"
+                                ],
+                                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                                "decimals": 2,
+                                "link": true,
+                                "linkTooltip": "JVM Dashboard",
+                                "linkUrl": "dashboard/db/jvm?var-instance=$__cell_3",
+                                "pattern": "app",
+                                "preserveFormat": false,
+                                "sanitize": false,
+                                "thresholds": [],
+                                "type": "string",
+                                "unit": "short"
+                            },
+                            {
+                                "alias": "Namespace",
+                                "colorMode": null,
+                                "colors": [
+                                    "rgba(245, 54, 54, 0.9)",
+                                    "rgba(237, 129, 40, 0.89)",
+                                    "rgba(50, 172, 45, 0.97)"
+                                ],
+                                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                                "decimals": 2,
+                                "pattern": "kubernetes_namespace",
+                                "thresholds": [],
+                                "type": "number",
+                                "unit": "short"
+                            },
+                            {
+                                "alias": "Pod Name",
+                                "colorMode": null,
+                                "colors": [
+                                    "rgba(245, 54, 54, 0.9)",
+                                    "rgba(237, 129, 40, 0.89)",
+                                    "rgba(50, 172, 45, 0.97)"
+                                ],
+                                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                                "decimals": 2,
+                                "pattern": "kubernetes_pod_name",
+                                "thresholds": [],
+                                "type": "number",
+                                "unit": "short"
+                            },
+                            {
+                                "alias": "JVM Vendor",
+                                "colorMode": null,
+                                "colors": [
+                                    "rgba(245, 54, 54, 0.9)",
+                                    "rgba(237, 129, 40, 0.89)",
+                                    "rgba(50, 172, 45, 0.97)"
+                                ],
+                                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                                "decimals": 2,
+                                "pattern": "vendor",
+                                "thresholds": [],
+                                "type": "number",
+                                "unit": "short"
+                            },
+                            {
+                                "alias": "Version",
+                                "colorMode": null,
+                                "colors": [
+                                    "rgba(245, 54, 54, 0.9)",
+                                    "rgba(237, 129, 40, 0.89)",
+                                    "rgba(50, 172, 45, 0.97)"
+                                ],
+                                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                                "decimals": 2,
+                                "pattern": "version",
+                                "thresholds": [],
+                                "type": "number",
+                                "unit": "short"
+                            }
+                        ],
+                        "targets": [
+                            {
+                                "expr": "jvm_info{}",
+                                "format": "table",
+                                "instant": true,
+                                "intervalFactor": 1,
+                                "legendFormat": "",
+                                "refId": "A"
+                            }
+                        ],
+                        "title": "JVMs",
+                        "transform": "table",
+                        "type": "table"
+                    }
+                ],
+                "repeat": null,
+                "repeatIteration": null,
+                "repeatRowId": null,
+                "showTitle": false,
+                "title": "Dashboard Row",
+                "titleSize": "h6"
             }
         ],
         "schemaVersion": 14,
         "style": "dark",
-        "tags": [
-          "Tomcat"
-        ],
+        "tags": [],
         "templating": {
             "list": [
                 {
@@ -172,19 +401,19 @@
         },
         "timezone": "browser",
         "title": "Tomcat",
-        "version": 0
+        "version": 4
     },
     "meta": {
         "canEdit": true,
         "canSave": true,
         "canStar": true,
-        "created": "2017-11-23T14:54:21Z",
+        "created": "2017-11-24T09:45:41Z",
         "createdBy": "admin",
         "expires": "0001-01-01T00:00:00Z",
         "slug": "tomcat",
         "type": "db",
-        "updated": "2017-11-23T14:54:21Z",
+        "updated": "2017-11-24T11:37:29Z",
         "updatedBy": "admin",
-        "version": 0
+        "version": 4
     }
 }
