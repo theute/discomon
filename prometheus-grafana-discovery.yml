@@ -104,6 +104,9 @@ objects:
     to:
       kind: Service
       name: prometheus
+### We'd like to keep deplyment and deploymentconfig labels,
+### but removing them for now to have Tomcat>JVM links working in Grafana
+### See: https://github.com/grafana/grafana/issues/9982
 - apiVersion: v1
   kind: ConfigMap
   metadata:
@@ -123,8 +126,6 @@ objects:
               namespaces:
                 names:
                   - <NAMESPACE>
-### We'd like to keep those, but removing them for now to have Tomcat>JVM links working in Grafana
-### See: https://github.com/grafana/grafana/issues/9982
           metric_relabel_configs:
             - regex: 'deployment'
               action: labeldrop
